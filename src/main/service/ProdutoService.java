@@ -1,0 +1,41 @@
+package com.projeto.apirest.service;
+
+import com.projeto.apirest.model.Produto;
+import com.projeto.apirest.repository.ProdutoRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ProdutoService {
+
+
+    private final ProdutoRepository repository;
+
+
+    public ProdutoService(ProdutoRepository repository){
+        this.repository = repository;
+    }
+
+
+    public List<Produto> listar(){
+
+        return repository.findAll();
+
+    }
+
+
+    public Produto salvar(Produto produto){
+
+        return repository.save(produto);
+
+    }
+
+
+    public void deletar(Long id){
+
+        repository.deleteById(id);
+
+    }
+
+}
